@@ -2,7 +2,7 @@
 """
 PlayTV 24/7 Cloud Stream Sync Engine
 Runs on GitHub Actions to auto-update live Akamai CDN streams into Firebase RTDB.
-Monitors: Sony SAB, MAX HD, MAX 2, YAY, PAL, WAH, BBC Earth HD, Sports Ten 1, Ten 2, Ten 3.
+Monitors: Sony TV HD, SAB HD, MAX HD, MAX 2, PIX HD, YAY, PAL, WAH, BBC Earth HD, Sports Ten 1, Ten 2, Ten 3.
 """
 
 import urllib.request
@@ -20,9 +20,11 @@ FIREBASE_URL = "https://playtv-ba8df-default-rtdb.firebaseio.com/channels.json"
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 
 CH_MAPPING = {
+    "Sony Entertainment Television HD": "sonytv",
     "Sony SAB": "sonysab",
     "Sony MAX HD": "sonymaxhd",
     "Sony MAX 2": "sonymax2",
+    "Sony PIX HD": "sonypix",
     "Sony YAY": "sonyyay",
     "Sony PAL": "sonypal",
     "Sony WAH": "sonywah",
@@ -32,7 +34,7 @@ CH_MAPPING = {
     "Sony Sports 3 Hindi HD": "sonysports3"
 }
 
-PRESERVED_FALLBACKS = {"sonysports1", "sonysports2", "bbcearth"}
+PRESERVED_FALLBACKS = {"sonysports1", "sonysports2", "bbcearth", "sonytv"}
 
 def log(msg):
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
