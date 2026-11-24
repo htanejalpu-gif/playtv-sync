@@ -98,8 +98,9 @@ CANDIDATE_POOLS = {
         "http://38.96.178.203/SPORTS1/index.m3u8"
     ],
     "andpictures": [
-        "https://jmp2.uk/stvp-IN4000555E",
-        "https://tvsen3.aynaott.com/VamXuQH8/index.m3u8"
+        "http://103.175.129.221/live/24WNKGE/XR26C4A/1020163.m3u8",
+        "http://103.175.129.221/live/24WNKGE/XR26C4A/72165.m3u8",
+        "http://103.175.129.221/live/24WNKGE/XR26C4A/510226.m3u8"
     ],
     "andtv": [
         "https://jmp2.uk/stvp-GB800002OP",
