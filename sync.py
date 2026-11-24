@@ -31,10 +31,11 @@ CH_MAPPING = {
     "Sony BBC Earth HD": "bbcearth",
     "Sony Sports 1 HD": "sonysports1",
     "Sony Sports 2 HD": "sonysports2",
-    "Sony Sports 3 Hindi HD": "sonysports3"
+    "Sony Sports 3 Hindi HD": "sonysports3",
+    "Sony Sports 5 HD": "sonysports5"
 }
 
-PRESERVED_FALLBACKS = {"sonysports1", "sonysports2", "bbcearth", "sonytv"}
+PRESERVED_FALLBACKS = {"sonysports1", "sonysports2", "bbcearth", "sonytv", "sonysports5"}
 
 def log(msg):
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
