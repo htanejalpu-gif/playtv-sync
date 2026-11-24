@@ -2,6 +2,7 @@
 """
 PlayTV 24/7 Cloud Stream Sync Engine
 Runs on GitHub Actions to auto-update live Akamai CDN streams into Firebase RTDB.
+Monitors: Sony SAB, MAX HD, MAX 2, YAY, PAL, WAH, BBC Earth HD, Sports Ten 1, Ten 2, Ten 3.
 """
 
 import urllib.request
@@ -23,9 +24,15 @@ CH_MAPPING = {
     "Sony MAX HD": "sonymaxhd",
     "Sony MAX 2": "sonymax2",
     "Sony YAY": "sonyyay",
+    "Sony PAL": "sonypal",
+    "Sony WAH": "sonywah",
+    "Sony BBC Earth HD": "bbcearth",
     "Sony Sports 1 HD": "sonysports1",
-    "Sony Sports 2 HD": "sonysports2"
+    "Sony Sports 2 HD": "sonysports2",
+    "Sony Sports 3 Hindi HD": "sonysports3"
 }
+
+PRESERVED_FALLBACKS = {"sonysports1", "sonysports2", "bbcearth"}
 
 def log(msg):
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -85,7 +92,8 @@ def main():
                     log(f"  Old: {cur_url[:60]}...")
                     log(f"  New: {new_url[:60]}...")
                     ch["primaryUrl"] = new_url
-                    ch["fallbackUrl"] = new_url
+                    if ch_id not in PRESERVED_FALLBACKS:
+                        ch["fallbackUrl"] = new_url
                     updated = True
                 else:
                     log(f"New stream verification failed for {ch.get('name')}, skipping.")
