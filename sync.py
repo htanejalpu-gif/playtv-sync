@@ -98,11 +98,12 @@ CANDIDATE_POOLS = {
         "http://38.96.178.203/SPORTS1/index.m3u8"
     ],
     "andpictures": [
-        "https://tvsen6.aynaott.com/andpictureshd/index.m3u8",
-        "https://tvsen3.aynaott.com/jzT482XQ/index.m3u8"
+        "https://jmp2.uk/stvp-IN4000555E",
+        "https://tvsen3.aynaott.com/VamXuQH8/index.m3u8"
     ],
     "andtv": [
-        "https://tvsen6.aynaott.com/AndTV/index.m3u8"
+        "https://jmp2.uk/stvp-GB800002OP",
+        "https://3f56f997.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U2Ftc3VuZy1nYl9BbmRUVl9ITFM/playlist.m3u8"
     ],
     "hbo": [
         "http://15.204.246.24:8080/HBOHD/index.m3u8",
@@ -122,13 +123,13 @@ CANDIDATE_POOLS = {
         "https://tvpass.org/live/FoxSports2/sd"
     ],
     "natgeo": [
-        "https://tvsen6.aynaott.com/natgeo/index.m3u8",
         "https://tvsen3.aynaott.com/7mm4pwCy/index.m3u8",
+        "https://tvsen6.aynaott.com/natgeo/index.m3u8",
         "http://15.204.246.24:8080/NatGeoHD/index.m3u8"
     ],
     "discoveryturbo": [
-        "https://tvsen6.aynaott.com/discovery_turbo/index.m3u8",
-        "https://tvsen3.aynaott.com/9tYGMmMS/index.m3u8"
+        "https://tvsen3.aynaott.com/9tYGMmMS/index.m3u8",
+        "https://tvsen6.aynaott.com/discovery_turbo/index.m3u8"
     ]
 }
 
