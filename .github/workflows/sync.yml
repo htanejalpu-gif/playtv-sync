@@ -1,0 +1,26 @@
+name: PlayTV 24/7 Stream Sync
+
+on:
+  schedule:
+    # Run every 20 minutes automatically
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Cloud Sync
+        run: |
+          python sync.py
