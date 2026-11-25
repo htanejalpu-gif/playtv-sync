@@ -262,7 +262,16 @@ def main():
         if ch_id in sony_streams:
             new_url = sony_streams[ch_id]
             if cur_primary != new_url:
-                if verify_stream(new_url):
+                # Akamai CDN (dishmt.slivcdn.com) blocks foreign cloud/Azure datacenter IPs where
+                # GitHub Actions runs. Upstream repo (sportlive18) generates fresh validated
+                # Indian tokens, so we accept new valid token URLs directly.
+                if new_url.startswith("https://dishmt.slivcdn.com") and "hdnea=" in new_url:
+                    log(f"[SONY REFRESH] {ch_name}: applying updated Akamai token URL.")
+                    ch["primaryUrl"] = new_url
+                    if ch_id not in PRESERVED_FALLBACKS:
+                        ch["fallbackUrl"] = new_url
+                    updated = True
+                elif verify_stream(new_url):
                     log(f"[SONY REFRESH] {ch_name}: updating primary token URL.")
                     ch["primaryUrl"] = new_url
                     if ch_id not in PRESERVED_FALLBACKS:
