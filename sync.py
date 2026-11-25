@@ -40,7 +40,8 @@ SONY_MAPPING = {
     "Sony BBC Earth HD": "bbcearth",
     "Sony Sports 1 HD": "sonysports1",
     "Sony Sports 2 HD": "sonysports2",
-    "Sony Sports 3 Hindi HD": "sonysports3"
+    "Sony Sports 3 Hindi HD": "sonysports3",
+    'tvg-name="Sony Sports 5"': "sonysports5"
 }
 
 # Channels whose fallback URLs should not be blindly overwritten by incoming M3U tokens
@@ -53,22 +54,24 @@ PRESERVED_FALLBACKS = {
 # Verified high-availability mirror pools for automatic failover & healing
 CANDIDATE_POOLS = {
     "discovery": [
-        "https://tvsen6.aynaott.com/discovery_hd/index.m3u8",
         "https://tvsen3.aynaott.com/Zht5VqBb/index.m3u8",
+        "https://tvsen6.aynaott.com/discovery_hd/index.m3u8",
         "https://tvsen5.aynaott.com/discoveryfamily/index.m3u8"
     ],
     "animalplanet": [
-        "https://tvsen6.aynaott.com/animal_planet_hd/index.m3u8",
         "https://tvsen3.aynaott.com/wpa56Uk3/index.m3u8",
+        "https://tvsen6.aynaott.com/animal_planet_hd/index.m3u8",
         "https://vodzong.mjunoon.tv:8087/streamtest/Animal-Planet-158-3/playlist.m3u8"
     ],
     "discoveryscience": [
+        "https://tvsen3.aynaott.com/Zht5VqBb/index.m3u8",
         "https://tvsen6.aynaott.com/discovery_science/index.m3u8",
-        "https://tvsen3.aynaott.com/Zht5VqBb/index.m3u8"
+        "https://tvsen5.aynaott.com/discoveryfamily/index.m3u8"
     ],
     "tlc": [
+        "https://tvsen3.aynaott.com/EJagkNL2/index.m3u8",
         "https://tvsen6.aynaott.com/tlc_hd/index.m3u8",
-        "https://tvsen3.aynaott.com/EJagkNL2/index.m3u8"
+        "https://tvsen5.aynaott.com/discoveryfamily/index.m3u8"
     ],
     "cn_hd": [
         "https://cdn4.skygo.mn/live/disk1/Cartoon_Network/HLSv3-FTA/Cartoon_Network.m3u8",
