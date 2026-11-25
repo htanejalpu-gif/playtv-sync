@@ -48,7 +48,7 @@ SONY_MAPPING = {
 PRESERVED_FALLBACKS = {
     "sonysports1", "sonysports2", "bbcearth", "sonytv", "sonysports5",
     "discovery", "animalplanet", "discoveryscience", "tlc", "cn_hd", "cn_hindi", "discovery_kids", "pogo", "tsports",
-    "andpictures", "andtv", "hbo", "hbo2", "foxsports1", "foxsports2", "natgeo", "discoveryturbo"
+    "andpictures", "andtv", "hbo", "hbo2", "foxsports1", "natgeo", "discoveryturbo"
 }
 
 # Verified high-availability mirror pools for automatic failover & healing
@@ -121,10 +121,6 @@ CANDIDATE_POOLS = {
         "https://d1jzu95oc8fgt3.cloudfront.net/FOX_Sports.m3u8",
         "https://fl3.moveonjoy.com/FOX_Sports_1/index.m3u8"
     ],
-    "foxsports2": [
-        "https://skynewsau-live-premium.akamaized.net/hls/live/2105307/foxsportsnews/live_1080p.m3u8",
-        "https://tvpass.org/live/FoxSports2/sd"
-    ],
     "natgeo": [
         "https://tvsen3.aynaott.com/7mm4pwCy/index.m3u8",
         "https://tvsen6.aynaott.com/natgeo/index.m3u8",
@@ -192,7 +188,6 @@ def fetch_upstream_dynamic():
         "hbo": ["hbo"],
         "hbo2": ["hbo 2", "hbo2"],
         "foxsports1": ["fox sports 1", "fs1"],
-        "foxsports2": ["fox sports 2", "fs2"],
         "natgeo": ["nat geo", "national geographic"],
         "discoveryturbo": ["discovery turbo", "turbo"]
     }
