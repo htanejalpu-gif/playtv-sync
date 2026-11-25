@@ -40,8 +40,7 @@ SONY_MAPPING = {
     "Sony BBC Earth HD": "bbcearth",
     "Sony Sports 1 HD": "sonysports1",
     "Sony Sports 2 HD": "sonysports2",
-    "Sony Sports 3 Hindi HD": "sonysports3",
-    "Sony Sports 5 HD": "sonysports5"
+    "Sony Sports 3 Hindi HD": "sonysports3"
 }
 
 # Channels whose fallback URLs should not be blindly overwritten by incoming M3U tokens
@@ -152,21 +151,24 @@ def verify_stream(url, timeout=7):
     return False
 
 def fetch_sony_tokens():
-    """Fetch updated Sony LIV Akamai tokens from sportlive18."""
+    """Fetch updated Sony LIV Akamai tokens from sportlive18 with retry logic."""
     streams = {}
-    try:
-        req = urllib.request.Request(SONY_M3U_URL, headers=HEADERS)
-        with urllib.request.urlopen(req, context=ctx, timeout=10) as r:
-            lines = r.read().decode("utf-8", errors="ignore").splitlines()
-        for i, l in enumerate(lines):
-            if l.startswith("#EXTINF:"):
-                next_url = lines[i + 1].strip() if i + 1 < len(lines) else ""
-                for tag, ch_id in SONY_MAPPING.items():
-                    if tag in l and next_url.startswith("http"):
-                        streams[ch_id] = next_url
-        log(f"Sony LIV source: extracted {len(streams)} candidate streams.")
-    except Exception as e:
-        log(f"Warning: could not fetch Sony source: {e}")
+    for attempt in range(1, 4):
+        try:
+            req = urllib.request.Request(SONY_M3U_URL, headers=HEADERS)
+            with urllib.request.urlopen(req, context=ctx, timeout=30) as r:
+                lines = r.read().decode("utf-8", errors="ignore").splitlines()
+            for i, l in enumerate(lines):
+                if l.startswith("#EXTINF:"):
+                    next_url = lines[i + 1].strip() if i + 1 < len(lines) else ""
+                    for tag, ch_id in SONY_MAPPING.items():
+                        if tag in l and next_url.startswith("http"):
+                            streams[ch_id] = next_url
+            log(f"Sony LIV source: extracted {len(streams)} candidate streams (attempt {attempt}).")
+            if streams:
+                break
+        except Exception as e:
+            log(f"Warning: could not fetch Sony source (attempt {attempt}/3): {e}")
     return streams
 
 def fetch_upstream_dynamic():
@@ -249,6 +251,8 @@ def main():
 
     # 4. Process all channels
     for ch in channels:
+        if not ch or not isinstance(ch, dict):
+            continue
         ch_id = ch.get("id")
         ch_name = ch.get("name", ch_id)
         cur_primary = ch.get("primaryUrl", "")
