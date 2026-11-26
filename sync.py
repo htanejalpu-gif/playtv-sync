@@ -48,7 +48,7 @@ SONY_MAPPING = {
 PRESERVED_FALLBACKS = {
     "sonysports1", "sonysports2", "bbcearth", "sonytv", "sonysports5",
     "discovery", "animalplanet", "discoveryscience", "tlc", "cn_hd", "cn_hindi", "discovery_kids", "pogo", "tsports",
-    "andpictures", "andtv", "hbo", "hbo2", "foxsports1", "natgeo", "discoveryturbo"
+    "andpictures", "andtv", "hbo", "hbo2", "foxsports1", "foxcricket", "natgeo", "discoveryturbo"
 }
 
 # Verified high-availability mirror pools for automatic failover & healing
@@ -120,6 +120,10 @@ CANDIDATE_POOLS = {
         "http://85.237.89.160:9590/usa-s/FOX-SPORTS-1/index.m3u8",
         "https://d1jzu95oc8fgt3.cloudfront.net/FOX_Sports.m3u8",
         "https://fl3.moveonjoy.com/FOX_Sports_1/index.m3u8"
+    ],
+    "foxcricket": [
+        "http://89.187.179.148:826/live/1368/gXwiagaXda/110881.m3u8",
+        "http://main.light-ott.net/play/live.php?mac=00:1A:79:1D:12:35&stream=809389&extension=m3u8"
     ],
     "natgeo": [
         "https://tvsen3.aynaott.com/7mm4pwCy/index.m3u8",
